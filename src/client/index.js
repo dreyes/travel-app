@@ -1,11 +1,11 @@
-import { requestCoordinates } from './js/app'
+import { runRequests } from './js/app'
 import './styles/style.scss'
 
 console.log('hello webpack');
 document.getElementById('test-btn').addEventListener('click', () => {
-  requestCoordinates();
+  Client.runRequests();
 });
 
 export {
-  requestCoordinates
+  runRequests
 }
