@@ -9,8 +9,14 @@ const runRequests = async () => {
   .then(function() {
     getCoordinates()
     .then(function() {
-      getCurrentWeather()
-      getWeatherForecast()
+      // If the start day is one week from today's date, it gives current weather
+      // If the start day is over one week, it gives weather forecast
+      let difference = Client.calculateDifference();
+      if (difference < 8) {
+        getCurrentWeather()
+      } else {
+        getWeatherForecast()
+      }
     })
   })
 };
@@ -19,7 +25,7 @@ const runRequests = async () => {
 const getURL = async () => {
   cityName = document.getElementById('city').value;
   const URLrequest = await fetch('/url')
-  try{
+  try {
     reqURL = await URLrequest.json();
   } catch(error) {
     console.log("error", error);

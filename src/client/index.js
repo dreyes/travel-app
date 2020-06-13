@@ -1,4 +1,5 @@
 import { runRequests } from './js/app'
+import { calculateDifference } from './js/dateCalculator'
 import './styles/style.scss'
 
 document.getElementById('test-btn').addEventListener('click', () => {
@@ -6,5 +7,6 @@ document.getElementById('test-btn').addEventListener('click', () => {
 });
 
 export {
-  runRequests
+  runRequests,
+  calculateDifference
 }
