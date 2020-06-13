@@ -5,6 +5,11 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 
+/* Global Variables */
+// API call http://api.geonames.org/searchJSON?q=london&maxRows=10&username=demo
+const baseURLGeonames = 'http://api.geonames.org/searchJSON?q=';
+const appKeyGeonames = `&maxRows=10&username=${process.env.GEONAMES_API_USER}`;
+
 // Start up an instance of app
 const app = express();
 
@@ -26,3 +31,7 @@ const port = 8081;
 const server = app.listen(port, () => {
   console.log(`running on localhost port: ${port}`);
 })
+
+app.get('/url', (req, res) => {
+  res.send({ base: baseURLGeonames, key: appKeyGeonames});
+});
