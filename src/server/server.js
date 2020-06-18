@@ -18,6 +18,12 @@ const lat = '&lat=';
 const lon = '&lon=';
 const appKeyWeatherbit = `&key=${process.env.WEATHERBIT_API_KEY}`;
 
+// Pixabay https://pixabay.com/api/?key=17030772-6b41962d31393a5481c5f30e6&q=yellow+flowers&image_type=photo
+const baseURLPixabay = 'https://pixabay.com/api/';
+const appKeyPixabay = `?key=${process.env.PIXABAY_API_KEY}`;
+const query = '&q=';
+const imageType = '&image_type=photo';
+
 // Start up an instance of app
 const app = express();
 
@@ -41,5 +47,5 @@ const server = app.listen(port, () => {
 })
 
 app.get('/url', (req, res) => {
-  res.send({ baseGeonames: baseURLGeonames, keyGeonames: appKeyGeonames, baseCurrent: baseURLCurrent, baseForecast: baseURLForecast, keyWeatherbit: appKeyWeatherbit, lat:lat, lon:lon });
+  res.send({ baseGeonames: baseURLGeonames, keyGeonames: appKeyGeonames, baseCurrent: baseURLCurrent, baseForecast: baseURLForecast, keyWeatherbit: appKeyWeatherbit, lat:lat, lon:lon, basePixabay: baseURLPixabay, keyPixabay: appKeyPixabay, query: query, imageType: imageType });
 });

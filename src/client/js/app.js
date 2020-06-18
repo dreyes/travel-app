@@ -17,6 +17,7 @@ const runRequests = async () => {
       } else {
         getWeatherForecast()
       }
+      getImage();
     })
   })
 };
@@ -68,6 +69,17 @@ const getWeatherForecast= async () => {
   try{
     const weatherData = await weatherRequest.json();
     console.log(weatherData);
+  } catch(error) {
+    console.log("error", error);
+  }
+};
+
+const getImage= async () => {
+  console.log(reqURL.basePixabay+reqURL.keyPixabay+reqURL.query+""+reqURL.imageType);
+  const imageRequest = await fetch(reqURL.basePixabay+reqURL.keyPixabay+reqURL.query+"puerto+cortes"+reqURL.imageType);
+  try{
+    const imageData = await imageRequest.json();
+    console.log(imageData);
   } catch(error) {
     console.log("error", error);
   }
