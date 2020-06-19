@@ -24,14 +24,16 @@ const runRequests = async () => {
         console.log( "::: IMAGE DATA :::");
         let results = imageData.total;
         console.log("Results: "+results);
+        // If no results are received back from the city name, then a new search is done for the country
         if (results == 0) {
           getImage(projectData.country).then(imageData => {
             console.log(imageData)
-            projectData.image = imageData.hits[0].pageURL;
+            projectData.image = imageData.hits[0].largeImageURL;
             console.log(projectData);
+            updateUI(projectData);
           })
         } else {
-          projectData.image = imageData.hits[0].pageURL;
+          projectData.image = imageData.hits[0].largeImageURL;
           console.log(projectData);
         }
       })
@@ -91,6 +93,7 @@ const getWeatherForecast= async () => {
   }
 };
 
+// Request image from Pixabay
 const getImage= async (location = "") => {
   console.log(reqURL.basePixabay+reqURL.keyPixabay+reqURL.query+location+reqURL.imageType);
   const imageRequest = await fetch(reqURL.basePixabay+reqURL.keyPixabay+reqURL.query+location+reqURL.imageType);
@@ -101,6 +104,16 @@ const getImage= async (location = "") => {
     console.log("error", error);
   }
 };
+
+// Add image via HTML
+const updateUI = (myData) => {
+  console.log(myData.image);
+  let myDiv = document.getElementById('image');
+  myDiv.style.width = '100px';
+  myDiv.style.height = '100px';
+  myDiv.style.backgroundImage = `url(${myData.image})`;
+  myDiv.style.backgroundSize = "cover";
+}
 
 export { 
   runRequests
