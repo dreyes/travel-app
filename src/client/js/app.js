@@ -115,6 +115,17 @@ const updateUI = (myData) => {
   myDiv.style.backgroundSize = "cover";
 }
 
+// Request country data to Restcountries API
+const getCountryData= async () => {
+  const countryDataRequest = await fetch("https://restcountries.eu/rest/v2/name/"+projectData.country);
+  try{
+    const countryData = await countryDataRequest.json();
+    return countryData;
+  } catch(error) {
+    console.log("error", error);
+  }
+};
+
 export { 
   runRequests
 }
