@@ -6,16 +6,31 @@
     <link rel="icon" href="../media/image.png">
   </head>
 
-  <body>
-    <div id="app">
-      <h1>TravelMate</h1>
-      <label for="city">Enter City</label>
-      <input type="text" id="city" placeholder="Enter city name here">
-      <label for="start">Start date:</label>
-      <input type="date" id="start" name="trip-start">
-      <button id="test-btn" type = "submit"> Test </button>
+  <body class="main-body">
+    <div class="main-menu">
+      <div class="logo"></div>
+      <h1>Plan your trip</h1>
+      <label for="city">destination:</label>
+      <input type="text" id="city" placeholder="London...">
+      <div class="dates">
+        <div class="departure">
+          <label for="start">departure:</label>
+          <input type="date" id="start" name="trip-start">
+        </div>
+        <div class="return">
+          <label for="end">return:</label>
+          <input type="date" id="end" name="trip-end">
+        </div>
+      </div>
+      <label for="flights">flight info:</label>
+      <textarea id="flights" placeholder="UA124  - 7:00 (00/00/00) &#10;UA234 - 13:00 (00/00/00)"></textarea>
+      <label for="notes">notes:</label>
+      <textarea id="notes" placeholder="add your notes here..."></textarea>
+      <button id="trip-btn" type = "submit"> add trip </button>
+    </div>
+    <div class="main" id="app">
+      <h1>My trips</h1>
       <div id="image"></div>
-      <div id="image2"></div>
     </div>
   </body>
 </html>

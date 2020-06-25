@@ -28,13 +28,14 @@ const runRequests = async () => {
         if (results == 0) {
           getImage(projectData.country).then(imageData => {
             console.log(imageData)
-            projectData.image = imageData.hits[0].largeImageURL;
+            projectData.image = imageData.hits[1].largeImageURL;
             console.log(projectData);
             updateUI(projectData);
           })
         } else {
-          projectData.image = imageData.hits[0].largeImageURL;
+          projectData.image = imageData.hits[1].largeImageURL;
           console.log(projectData);
+          updateUI(projectData);
         }
       })
     })
@@ -108,11 +109,22 @@ const getImage= async (location = "") => {
 // Add image via HTML
 const updateUI = (myData) => {
   console.log(myData.image);
-  let myDiv = document.getElementById('image');
-  myDiv.style.width = '100px';
-  myDiv.style.height = '100px';
-  myDiv.style.backgroundImage = `url(${myData.image})`;
-  myDiv.style.backgroundSize = "cover";
+  let locationCard = document.createElement("div");
+  locationCard.classList.add("card");
+  let imageDiv = document.createElement("div");
+  imageDiv.classList.add("image");
+  imageDiv.style.backgroundImage = `url(${myData.image})`;
+  let infoDiv = document.createElement("div");
+  infoDiv.classList.add("info");
+  infoDiv.innerHTML = 
+    '<div class="card-heading">\n'+
+    `<h2>${myData.city}, ${myData.country}</h2>\n` +
+    '<div class="delete-btn"></div>' +
+    '</div>\n' +
+    `<h4>${myData.city}, ${myData.country}</h2>\n`;
+  locationCard.appendChild(imageDiv);
+  locationCard.appendChild(infoDiv);
+  document.getElementById("app").appendChild(locationCard);
 }
 
 // Request country data to Restcountries API
