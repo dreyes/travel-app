@@ -42,19 +42,19 @@
 }
 
 .image {
-  width: 400px;
+  width: 40%;
   height: 288px;
   background-size: cover;
 }
 
 .info {
-  width: 100%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   padding: 8px;
 }
 
-.card-heading {
+.card-heading, .card-subheading {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -72,12 +72,106 @@
   }
 }
 
+.card-data {
+  margin-bottom: 8px;
+}
+
+.weather-data-current {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 32px auto;
+  grid-template-areas: 
+  "title title"
+  "temp img";
+  width: 254px;
+  height: 154px;
+  background: #2D355F;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-left: -100px;
+}
+
+.weather-data-forecast {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 32px auto auto;
+  grid-template-areas: 
+  "title"
+  "mini"
+  "maxi";
+  width: 254px;
+  height: 154px;
+  background: #2D355F;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-left: -100px;
+}
+
+.weather-title {
+  grid-area: title;
+  display: flex;
+  justify-content: center;
+}
+
+.weather-temp {
+  grid-area: temp;
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  margin: 0 0 8px 8px;
+}
+
+.min-temp {
+  grid-area: mini;
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  margin: 0 0 8px 8px;
+}
+
+.max-temp {
+  grid-area: maxi;
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  margin: 0 0 8px 8px;
+}
+
+.temp {
+  font: 700 54px/40px Gudea;
+  color: white;
+}
+
+.celsius {
+  font: 700 32px/24px Gudea;
+  color: white;
+}
+
+.weather-img {
+  width: auto;
+  height: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  margin: 0 8px 8px 0px;
+}
+
+.card-btns {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+
 #flights {
   word-break: break-word;
 }
 
 #start, #end {
   width: 140px;
+}
+
+#city {
+  text-transform: capitalize;
 }
 
 .logo {
@@ -96,7 +190,13 @@ h1 {
 h2 {
   font: 700 24px/30px Gudea;
   color: white;
-  margin: 8px 0px;
+  margin: 8px 0 0 0;
+}
+
+h3 {
+  font: 700 18px/22px Gudea;
+  color: white;
+  margin: 8px 0 0 0;
 }
 
 h4 {
