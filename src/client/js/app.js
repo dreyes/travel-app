@@ -11,10 +11,12 @@ const runRequests = async () => {
   .then(function() {
     getCoordinates()
     .then(async () => {
-      return await getWeatherAndImage(); 
-    }).then(function() {
-      updateUI(projectData)
-    })
+      return await getCountryData(projectData)
+    }).then(async () => {
+        return await getWeatherAndImage(); 
+      }).then(function() {
+        updateUI(projectData)
+      })
   })
 };
 
@@ -130,6 +132,8 @@ const addToObject = () => {
   projectData.city = capitalize(projectData.city);
   projectData.departure = document.getElementById('start').value;
   projectData.return = document.getElementById('end').value;
+  projectData.flights = document.getElementById('flights').value;
+  projectData.notes = document.getElementById('notes').value;
 }
 
 // Add image via HTML
@@ -180,17 +184,25 @@ const updateUI = (myData) => {
   }
   infoDiv.innerHTML =
     '<div class="card-heading">\n' +
-    `<h2>${myData.city}, ${myData.country}</h2>\n` +
-    '<div class="delete-btn"></div>\n' +
+      `<h2>${myData.city}, ${myData.country}</h2>\n` +
+      '<div class="delete-btn"></div>\n' +
     '</div>\n' +
     '<div class="card-subheading">\n' +
-    `<h4>${myData.departure} - ${myData.return}</h4>\n` +
-    `<h4>Trip Length: ${myData.tripLength} days</h4>\n` +
+      `<h4>${myData.departure} - ${myData.return}</h4>\n` +
+      `<h4>Trip Length: ${myData.tripLength} days</h4>\n` +
     '</div>\n' +
     '<div class="card-data">\n' +
-    weatherCard +
-    `<div class="trip-data">\n` +
-    '</div>\n' +
+      weatherCard +
+      `<div class="trip-data">\n` +
+        '<div class="mixed-text">\n' +
+          '<h3 class="inner-h3">flight info: </h3>\n' +
+          `<textarea class="inner-ta">${myData.flights}</textarea>\n` +
+        '</div>\n' +
+        '<div class="mixed-text">\n' +
+          '<h3 class="inner-h3">country info: </h3>\n' +
+          `<textarea class="inner-ta">Region: ${myData.region}\nLanguage: ${myData.language}\nCurrency: ${myData.currency}\nPopulation: ${myData.population}</textarea>\n` +
+        '</div>\n' +
+      '</div>\n' +
     '</div>\n' +
     `<div class="card-btns">\n` +
     '</div>\n';
@@ -257,10 +269,17 @@ const capitalize = (input) => {
 }
 
 // Request country data to Restcountries API
-const getCountryData = async () => {
+const getCountryData = async (myData) => {
   const countryDataRequest = await fetch("https://restcountries.eu/rest/v2/name/"+projectData.country);
   try{
     const countryData = await countryDataRequest.json();
+    console.log("::: COUNTRY DATA :::");
+    console.log(countryData);
+    myData.currency = countryData[0].currencies[0].name;
+    myData.language = countryData[0].languages[0].name;
+    myData.population = countryData[0].population;
+    myData.population = myData.population.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    myData.region = countryData[0].region;
     return countryData;
   } catch(error) {
     console.log("error", error);

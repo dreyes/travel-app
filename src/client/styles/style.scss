@@ -73,6 +73,7 @@
 }
 
 .card-data {
+  display: flex;
   margin-bottom: 8px;
 }
 
@@ -153,7 +154,31 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: bottom;
-  margin: 0 8px 8px 0px;
+  margin: 0 8px 8px 8px;
+}
+
+.trip-data {
+  width: 100%;
+  margin-left: 8px;
+}
+
+.mixed-text {
+  display: flex;
+  height: 72px;
+  margin-top: 8px;
+}
+
+.inner-h3 {
+  width: 88px;
+  margin: 0;
+}
+
+.inner-ta {
+  width: 100%;
+  padding: 0;
+  height: 100%;
+  border-style: none;
+  margin: 0;
 }
 
 .card-btns {
