@@ -25,6 +25,18 @@
   margin-left: 372px;
 }
 
+#print-btn {
+  background-image: url('/media/print_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  &:hover {
+    filter: drop-shadow(0 4px 4px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19));
+    transform: scale(1.1);
+  }
+}
+
 .dates {
   display: flex;
   flex-direction: row;
@@ -78,10 +90,11 @@
   padding: 8px;
 }
 
-.card-heading, .card-subheading {
+.main-heading, .card-heading, .card-subheading {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .delete-btn {

@@ -307,12 +307,19 @@ const getCountryData = async (myData) => {
     console.log("error", error);
   }
 };
+ 
 
-const addAdditional = () => {
-
+const printPDF = () => {
+  const cssText = `
+    h1 {
+      color: black;
+      font-family: sans-serif;
+    }
+  `
+  
 }
 
 export {
   runRequests,
-  addAdditional
+  printPDF
 }

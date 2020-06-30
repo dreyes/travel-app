@@ -1,9 +1,25 @@
-import { runRequests } from './js/app'
+import { runRequests, printPDF } from './js/app'
 import { calculateDifference } from './js/dateCalculator'
+import { Printd } from 'printd'
 import './styles/style.scss'
 
 document.getElementById('trip-btn').addEventListener('click', () => {
   Client.runRequests();
+});
+
+document.getElementById('print-btn').addEventListener('click', () => {
+  let customCSS = 
+  `#app {
+    margin-left: 0;
+  }
+  
+  .card, .additional {
+    background: #2D355F;
+  }`;
+  const d = new Printd();
+  const scripts = "";
+  const printCallback = ({ launchPrint }) => launchPrint()
+  d.print(document.getElementById('app'), ['./main.css', customCSS], scripts , printCallback);
 });
 
 document.getElementById("app").addEventListener("click", function(e) {
@@ -70,5 +86,6 @@ document.getElementById('start').addEventListener('change', () => {
 
 export {
   runRequests,
+  printPDF,
   calculateDifference
 }
