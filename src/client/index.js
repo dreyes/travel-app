@@ -9,8 +9,52 @@ document.getElementById('trip-btn').addEventListener('click', () => {
 document.getElementById("app").addEventListener("click", function(e) {
 	// e.target was the clicked element
   if (e.target && e.target.matches("div.delete-btn")) {
-    e.target.parentNode.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode.parentNode);
-    console.log("Anchor element clicked!");
+    e.target.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode.parentNode.parentNode);
+  }
+  if (e.target && e.target.matches("div#notes-btn")) {
+    if (e.target.innerHTML === "+ add notes") {
+      e.target.innerHTML = "- remove notes";
+      let n = document.createElement("div");
+      n.classList.add('additional');
+      n.classList.add('notes');
+      n.innerHTML = 
+      '<h3>notes: </h3>\n' +
+      `<textarea class="inner-ta" placeholder="add some notes here..."></textarea>\n`;
+      e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].appendChild(n);
+    } else {
+      e.target.innerHTML = "+ add notes";
+      e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].removeChild(e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.notes'));
+    }
+  }
+  if (e.target && e.target.matches("div#lodging-btn")) {
+    if (e.target.innerHTML === "+ add lodging info") {
+      e.target.innerHTML = "- remove lodging";
+      let l = document.createElement("div");
+      l.classList.add('additional');
+      l.classList.add('lodging');
+      l.innerHTML = 
+      '<h3>lodging info: </h3>\n' +
+      `<textarea class="inner-ta" placeholder="add some lodging info here..."></textarea>\n`;
+      e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].appendChild(l);
+    } else {
+      e.target.innerHTML = "+ add lodging info";
+      e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].removeChild(e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.lodging'));
+    }
+  }
+  if (e.target && e.target.matches("div#packing-btn")) {
+    if (e.target.innerHTML === "+ add packing list") {
+      e.target.innerHTML = "- remove list";
+      let p = document.createElement("div");
+      p.classList.add('additional');
+      p.classList.add('packing');
+      p.innerHTML = 
+      '<h3>packing info: </h3>\n' +
+      `<textarea class="inner-ta" placeholder="add some packing info here..."></textarea>\n`;
+      e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].appendChild(p);
+    } else {
+      e.target.innerHTML = "+ add packing list";
+      e.target.parentNode.parentNode.parentNode.parentNode.childNodes[1].removeChild(e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.packing'));
+    }
 	}
 });
 

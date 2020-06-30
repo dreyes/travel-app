@@ -2,6 +2,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+let favicon = require('serve-favicon');
+var path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -26,6 +28,8 @@ const imageType = '&image_type=photo';
 
 // Start up an instance of app
 const app = express();
+// app.use(favicon(path.join(__dirname, 'dist', '/media/travelmate_favicon.png')))
+app.use(favicon(path.join(__dirname, 'favicon.ico')));
 
 /* Middleware*/
 

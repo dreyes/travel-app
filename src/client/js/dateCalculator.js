@@ -1,7 +1,9 @@
 let today = new Date();
 let currentDate = today.getFullYear()+'-'+("00"+(today.getMonth()+1)).slice(-2)+'-'+("00"+(today.getDate())).slice(-2);
 document.getElementById("start").defaultValue = currentDate;
-let tomorrow = today.getFullYear()+'-'+("00"+(today.getMonth()+1)).slice(-2)+'-'+("00"+(today.getDate()+1)).slice(-2);
+let tomorrow = new Date(today);
+tomorrow.setDate(tomorrow.getDate() + 1)
+tomorrow = tomorrow.getFullYear()+'-'+("00"+(tomorrow.getMonth()+1)).slice(-2)+'-'+("00"+(tomorrow.getDate())).slice(-2);
 document.getElementById("end").defaultValue = tomorrow;
 
 // Calculate the time difference between two dates (Start - Today)

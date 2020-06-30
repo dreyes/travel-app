@@ -1,35 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Gudea:wght@400;700&display=swap');
 
 .main-body {
-  display: grid;
-  grid-template-columns: 372px auto;
-  grid-template-rows: auto;
-  grid-template-areas: 
-  "menu main";
-  height: 100vh;
+  background-color: #2D355F;
   margin: 0;
 }
 
 .main-menu {
   display: flex;
   flex-direction: column;
-  grid-area: menu;
-  position: sticky;
+  //grid-area: mn;
+  position: fixed;
   z-index: 1;
   padding: 16px;
   width: 340px;
-  height: 100vh; 
+  height: 100%; 
+  overflow-x: hidden;
+  overflow-y: hidden;
   background-color: #FB7474;
 }
 
 .main {
   background-color: #2D355F;
   padding: 16px;
+  margin-left: 372px;
 }
 
 .dates {
   display: flex;
   flex-direction: row;
+}
+
+.expanded-card {
+  margin: 16px  0;
 }
 
 .card {
@@ -38,7 +40,29 @@
   background: #4E536D;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 288px;
-  margin: 16px  0;
+}
+
+.additional-elements {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  &:first-child {
+    margin-left: 0;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.additional {
+  display: flex;
+  flex-direction: column;
+  background: #4E536D;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 288px;
+  padding: 8px;
+  margin: 8px 4px 0 4px;
 }
 
 .image {
@@ -182,9 +206,24 @@
 }
 
 .card-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
-  background: #fff;
+}
+
+.card-btn {
+  font: 700 18px/32px Gudea;
+  color: #2D355F;
+  border: none;
+  background: white;
+  height: 32px;
+  width: 150px;
+  padding: 0 8px;
+  &:hover {
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
 }
 
 #flights {
@@ -246,7 +285,7 @@ input {
   margin: 8px 0 16px 0;
   padding: 0px 8px;
   &::placeholder {
-    color: #FFC3C3;
+    color: #ffffffa1;
   }
   &::-webkit-calendar-picker-indicator {
     margin: 0px;
@@ -264,7 +303,7 @@ textarea {
   margin: 8px 0 16px 0;
   padding: 8px;
   &::placeholder {
-    color: #FFC3C3;
+    color: #ffffffa1;
   }
 }
 

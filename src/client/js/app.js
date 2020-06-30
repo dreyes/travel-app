@@ -144,13 +144,30 @@ const updateUI = (myData) => {
   myData.return = fixDate(myData.return);
   addWeatherImg();
   console.log(myData.image);
+  let expandedCard = document.createElement("div");
+  expandedCard.classList.add("expanded-card");
   let locationCard = document.createElement("div");
   locationCard.classList.add("card");
+  let additionalElements = document.createElement("div");
+  additionalElements.classList.add("additional-elements");
   let imageDiv = document.createElement("div");
   imageDiv.classList.add("image");
   imageDiv.style.backgroundImage = `url(${myData.image})`;
   let infoDiv = document.createElement("div");
   infoDiv.classList.add("info");
+  let notesBtnText = "";
+  if (myData.notes === "") {
+    notesBtnText = "+ add notes";
+  } else {
+    notesBtnText = "- remove notes";
+    let notesDiv = document.createElement('div');
+    notesDiv.classList.add('additional');
+    notesDiv.classList.add('notes');
+    notesDiv.innerHTML = 
+    '<h3 class="inner-h3">notes: </h3>\n' +
+    `<textarea class="inner-ta">${myData.notes}</textarea>\n`;
+    additionalElements.appendChild(notesDiv);
+  }
 
   // Weather card selection
   let weatherCard = "";
@@ -205,10 +222,15 @@ const updateUI = (myData) => {
       '</div>\n' +
     '</div>\n' +
     `<div class="card-btns">\n` +
+      '<div class="card-btn" id="lodging-btn">+ add lodging info</div>\n' +
+      '<div class="card-btn" id="packing-btn">+ add packing list</div>\n' +
+      `<div class="card-btn" id="notes-btn">${notesBtnText}</div>\n` +
     '</div>\n';
   locationCard.appendChild(imageDiv);
   locationCard.appendChild(infoDiv);
-  document.getElementById("app").appendChild(locationCard);
+  expandedCard.appendChild(locationCard);
+  expandedCard.appendChild(additionalElements);
+  document.getElementById("app").appendChild(expandedCard);
 }
 
 // Fix date format for card
@@ -286,6 +308,11 @@ const getCountryData = async (myData) => {
   }
 };
 
+const addAdditional = () => {
+
+}
+
 export {
-  runRequests
+  runRequests,
+  addAdditional
 }
