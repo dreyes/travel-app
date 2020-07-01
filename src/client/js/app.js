@@ -9,43 +9,12 @@ const runRequests = async () => {
   getURL()
   .then(function() {
     getCoordinates()
-<<<<<<< Updated upstream
     .then(async () => {
       return await getCountryData(projectData)
     }).then(async () => {
         return await getWeatherAndImage(); 
       }).then(function() {
         updateUI(projectData)
-=======
-    .then(function() {
-      // If the start day is one week from today's date, it gives current weather
-      // If the start day is over one week, it gives weather forecast
-      let difference = Client.calculateDifference();
-      projectData.tripLength = difference.tripLength;
-      if (difference.daysDiff < 8) {
-        getCurrentWeather()
-      } else {
-        getWeatherForecast()
-      }
-      let cityName = projectData.city.replace(/ /g, "+");
-      getImage(cityName).then(imageData => {
-        console.log( "::: IMAGE DATA :::");
-        let results = imageData.total;
-        console.log("Results: "+results);
-        // If no results are received back from the city name, then a new search is done for the country
-        if (results == 0) {
-          getImage(projectData.country).then(imageData => {
-            console.log(imageData)
-            projectData.image = imageData.hits[1].largeImageURL;
-            console.log(projectData);
-            updateUI(projectData);
-          })
-        } else {
-          projectData.image = imageData.hits[1].largeImageURL;
-          console.log(projectData);
-          updateUI(projectData);
-        }
->>>>>>> Stashed changes
       })
   })
 };
@@ -159,16 +128,11 @@ const getImage= async (location = "") => {
 // Add initial data to object
 const addToObject = () => {
   projectData.city = document.getElementById('city').value;
-<<<<<<< Updated upstream
   projectData.city = capitalize(projectData.city);
   projectData.departure = document.getElementById('start').value;
   projectData.return = document.getElementById('end').value;
   projectData.flights = document.getElementById('flights').value;
   projectData.notes = document.getElementById('notes').value;
-=======
-  projectData.departure = document.getElementById('start').value;
-  projectData.return = document.getElementById('end').value;
->>>>>>> Stashed changes
 }
 
 // Add image via HTML
@@ -216,7 +180,6 @@ const updateUI = (myData) => {
     `<div class="temp">${myData.temp}</div>\n` +
     '<div class="celsius">  °C</div>\n' +
     '</div>\n' +
-<<<<<<< Updated upstream
     `<div class="weather-img" style="background-image: ${myData.weatherImg}"></div>\n` +
     '</div>\n';
   } else {
@@ -262,9 +225,6 @@ const updateUI = (myData) => {
       '<div class="card-btn" id="packing-btn">+ add packing list</div>\n' +
       `<div class="card-btn" id="notes-btn">${notesBtnText}</div>\n` +
     '</div>\n';
-=======
-    `<h4>${myData.departure}, ${myData.return}   Trip Length: ${myData.tripLength}</h2>\n`;
->>>>>>> Stashed changes
   locationCard.appendChild(imageDiv);
   locationCard.appendChild(infoDiv);
   expandedCard.appendChild(locationCard);
