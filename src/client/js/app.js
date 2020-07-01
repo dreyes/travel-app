@@ -2,9 +2,6 @@
 let reqURL = {};
 let projectData = {};
 
-//let location =
-//location = replaceSpace.replace(/ /g, "+");
-
 // Run tasks
 const runRequests = async () => {
   getURL()
@@ -242,6 +239,7 @@ const fixDate = (myDate) => {
   return `${mn}/${dt}/${yy}`;
 }
 
+// Add an image based on weather code
 const addWeatherImg = () => {
   const weatherDiv = document.getElementsByClassName("weather-img")[0];
   const x = projectData.weatherCode;
@@ -308,7 +306,7 @@ const getCountryData = async (myData) => {
   }
 };
  
-
+// print #app to PDF
 const printPDF = () => {
   const cssText = `
     h1 {

@@ -8,21 +8,35 @@
 .main-menu {
   display: flex;
   flex-direction: column;
-  //grid-area: mn;
-  position: fixed;
-  z-index: 1;
   padding: 16px;
-  width: 340px;
-  height: 100%; 
-  overflow-x: hidden;
-  overflow-y: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto; 
   background-color: #FB7474;
+}
+
+.return, .departure {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.return {
+  margin-left: 8px;
+}
+
+#start, #end {
+  height: 36px;
+}
+
+.destination, .flts, .nts {
+  display: flex;
+  flex-direction: column;
 }
 
 .main {
   background-color: #2D355F;
   padding: 16px;
-  margin-left: 372px;
 }
 
 #print-btn {
@@ -44,26 +58,22 @@
 
 .expanded-card {
   margin: 16px  0;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background: #4E536D;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 288px;
+  height: auto;
 }
 
 .additional-elements {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  &:first-child {
-    margin-left: 0;
-  }
-  &:last-child {
-    margin-right: 0;
-  }
 }
 
 .additional {
@@ -74,20 +84,22 @@
   width: 100%;
   height: 288px;
   padding: 8px;
-  margin: 8px 4px 0 4px;
+  box-sizing: border-box;
+  margin-top: 8px;
 }
 
 .image {
-  width: 40%;
+  width: 100%;
   height: 288px;
   background-size: cover;
 }
 
 .info {
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 8px;
+  box-sizing: border-box;
 }
 
 .main-heading, .card-heading, .card-subheading {
@@ -111,7 +123,8 @@
 
 .card-data {
   display: flex;
-  margin-bottom: 8px;
+  flex-direction: column;
+  margin: 8px 0;
 }
 
 .weather-data-current {
@@ -121,12 +134,13 @@
   grid-template-areas: 
   "title title"
   "temp img";
-  width: 254px;
+  width: 274px;
   height: 154px;
   background: #2D355F;
   border: 3px solid #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-left: -100px;
+  margin-left: 0;
+  align-self: center;
 }
 
 .weather-data-forecast {
@@ -137,12 +151,13 @@
   "title"
   "mini"
   "maxi";
-  width: 254px;
+  width: 274px;
   height: 154px;
   background: #2D355F;
   border: 3px solid #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-left: -100px;
+  margin-left: 0;
+  align-self: center;
 }
 
 .weather-title {
@@ -196,7 +211,7 @@
 
 .trip-data {
   width: 100%;
-  margin-left: 8px;
+  margin-left: 0;
 }
 
 .mixed-text {
@@ -220,7 +235,7 @@
 
 .card-btns {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   height: 100%;
   width: 100%;
@@ -232,8 +247,11 @@
   border: none;
   background: white;
   height: 32px;
-  width: 150px;
+  width: 100%;
   padding: 0 8px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 8px;
   &:hover {
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }
@@ -241,10 +259,6 @@
 
 #flights {
   word-break: break-word;
-}
-
-#start, #end {
-  width: 140px;
 }
 
 #city {
@@ -329,5 +343,210 @@ textarea {
   width: auto;
   &:hover {
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+}
+
+@media(min-width:740px) and (max-width:1048px) {
+  .main-menu {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas: 
+    "logo logo logo logo"
+    "ttl ttl ttl ttl"
+    "dst dst dts dts"
+    "fi fi nts nts"
+    "btn btn btn btn";
+    position: absolute;
+    top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto; 
+  }
+
+  .logo {
+    grid-area: logo;
+  }
+
+  .menu-header {
+    grid-area: ttl;
+  }
+
+  .destination {
+    grid-area: dst;
+  }
+
+  .dates {
+    grid-area: dts;
+    margin-left: 8px;
+  }
+
+  .flts {
+    grid-area: fi;
+  }
+
+  .nts {
+    grid-area: nts;
+    margin-left: 8px;
+  }
+
+  .return { 
+    margin-left: 8px;
+  }
+
+  #trip-btn {
+    grid-area: btn;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+  
+  .main-body {
+    margin-top: 420px;
+  }
+
+  .card {
+    flex-direction: row;
+    width: 100%;
+    height: 288px;
+  }
+
+  .image {
+    width: 40%;
+  }
+
+  .info {
+    width: 60%;
+  }
+
+  .card-data {
+    margin-top: 0;
+    flex-direction: row;
+  }
+
+  .weather-data-current {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 32px auto;
+    grid-template-areas: 
+    "title title"
+    "temp img";
+    width: 254px;
+    height: 154px;
+    background: #2D355F;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: -100px;
+  }
+
+  .weather-data-forecast, .weather-data-current {
+    margin-left: -120px;
+    align-self: left;
+  }
+
+  .trip-data {
+    margin-left: 8px;
+    width: 80%;
+  }
+
+  .card-btns {
+    flex-direction: row;
+  }
+
+  .card-btn {
+    box-sizing: content-box;
+    width: 150px;
+    margin-top: 0;
+  }
+
+  .additional-elements {
+    flex-direction: row;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .additional {
+    margin: 8px 4px 0;
+  }
+}
+
+@media (min-width:1048px) {
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    padding: 16px;
+    width: 340px;
+    height: 100%; 
+    box-sizing: content-box;
+    overflow-x: hidden;
+    background-color: #FB7474;
+  }
+
+  .main{
+    margin-left: 372px;
+  }
+
+  #start, #end {
+    width: 140px;
+  }
+
+  .card {
+    flex-direction: row;
+    width: 100%;
+    height: 288px;
+  }
+
+  .image {
+    width: 40%;
+  }
+
+  .info {
+    width: 60%;
+  }
+
+  .card-data {
+    margin-top: 0;
+    flex-direction: row;
+  }
+
+  .weather-data-forecast, .weather-data-current {
+    margin-left: -120px;
+    align-self: left;
+  }
+
+  .trip-data {
+    width:80%;
+    margin-left: 8px;
+  }
+
+  .card-btns {
+    flex-direction: row;
+  }
+
+  .card-btn {
+    box-sizing: content-box;
+    width: 150px;
+    margin-top: 0;
+  }
+
+  .additional-elements {
+    flex-direction: row;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .additional {
+    margin: 8px 4px 0;
   }
 }
