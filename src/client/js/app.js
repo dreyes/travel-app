@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime'
+
 // Global Variables
 let reqURL = {};
 let projectData = {};
@@ -305,19 +307,9 @@ const getCountryData = async (myData) => {
     console.log("error", error);
   }
 };
- 
-// print #app to PDF
-const printPDF = () => {
-  const cssText = `
-    h1 {
-      color: black;
-      font-family: sans-serif;
-    }
-  `
-  
-}
 
 export {
   runRequests,
-  printPDF
+  getURL,
+  getCountryData
 }

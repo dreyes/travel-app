@@ -1,4 +1,4 @@
-import { runRequests, printPDF } from './js/app'
+import { runRequests, getCountryData, getWeatherAndImage } from './js/app'
 import { calculateDifference } from './js/dateCalculator'
 import { Printd } from 'printd'
 import './styles/style.scss'
@@ -86,6 +86,7 @@ document.getElementById('start').addEventListener('change', () => {
 
 export {
   runRequests,
-  printPDF,
+  getCountryData,
+  getWeatherAndImage,
   calculateDifference
 }

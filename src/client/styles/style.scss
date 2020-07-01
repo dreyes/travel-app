@@ -550,3 +550,93 @@ textarea {
     margin: 8px 4px 0;
   }
 }
+
+@media print and (color) {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  h1 {
+    color: #000;
+  }
+
+  div{
+    page-break-inside: avoid;
+  }
+
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    padding: 16px;
+    width: 340px;
+    height: 100%; 
+    box-sizing: content-box;
+    overflow-x: hidden;
+    background-color: #FB7474;
+  }
+
+  .main{
+    background-color: #fff;
+    margin-left: 372px;
+  }
+
+  #start, #end {
+    width: 140px;
+  }
+
+  .card {
+    flex-direction: row;
+    width: 100%;
+    height: 288px;
+  }
+
+  .image {
+    width: 40%;
+  }
+
+  .info {
+    width: 60%;
+  }
+
+  .card-data {
+    margin-top: 0;
+    flex-direction: row;
+  }
+
+  .weather-data-forecast, .weather-data-current {
+    margin-left: -120px;
+    align-self: left;
+  }
+
+  .trip-data {
+    width:80%;
+    margin-left: 8px;
+  }
+
+  .card-btns {
+    flex-direction: row;
+  }
+
+  .card-btn {
+    box-sizing: content-box;
+    width: 150px;
+    margin-top: 0;
+  }
+
+  .additional-elements {
+    flex-direction: row;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .additional {
+    margin: 8px 4px 0;
+  }
+}
