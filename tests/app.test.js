@@ -1,4 +1,4 @@
-import { getCountryData, getURL } from './app'
+import { getCountryData, getURL } from '../src/client/js/app'
 
 test('REST Countries API returns an object', async () => {
   getCountryData({ country:'Honduras' });

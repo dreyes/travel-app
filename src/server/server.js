@@ -53,3 +53,5 @@ const server = app.listen(port, () => {
 app.get('/url', (req, res) => {
   res.send({ baseGeonames: baseURLGeonames, keyGeonames: appKeyGeonames, baseCurrent: baseURLCurrent, baseForecast: baseURLForecast, keyWeatherbit: appKeyWeatherbit, lat:lat, lon:lon, basePixabay: baseURLPixabay, keyPixabay: appKeyPixabay, query: query, imageType: imageType });
 });
+
+module.exports = app;
